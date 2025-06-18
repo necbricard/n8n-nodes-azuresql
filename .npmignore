@@ -1,2 +1,37 @@
-.DS_Store
-*.tsbuildinfo
+# Development files
+node_modules/
+src/
+tsconfig.json
+.eslintrc.js
+.eslintrc.prepublish.js
+.prettierrc.js
+.editorconfig
+.gitignore
+gulpfile.js
+
+# Build scripts
+build-and-link.bat
+compile.bat
+setup-n8n-custom.bat
+setup-n8n-custom.sh
+
+# Test files
+**/*.test.ts
+**/*.spec.ts
+**/test/
+
+# Example files
+nodes/ExampleNode/
+nodes/HttpBin/
+credentials/ExampleCredentialsApi.credentials.ts
+credentials/HttpBinApi.credentials.ts
+
+# Source TypeScript files (only ship compiled JS)
+**/*.ts
+!**/*.d.ts
+
+# Misc
+.git/
+.github/
+.vscode/
+*.log

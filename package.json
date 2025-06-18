@@ -1,26 +1,37 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-azuresql",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n node to connect and interact with Azure SQL databases with dynamic database selection",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "azure",
+    "sql",
+    "database",
+    "azure-sql",
+    "mssql"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/yourusername/n8n-nodes-azuresql#readme",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Your Name",
+    "email": "your.email@example.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "git+https://github.com/yourusername/n8n-nodes-azuresql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/n8n-nodes-azuresql/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=20.15"
   },
   "main": "index.js",
   "scripts": {
-    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "build": "npx rimraf dist && mkdir dist && mkdir dist\\credentials && mkdir dist\\nodes && mkdir dist\\nodes\\Azure && mkdir dist\\nodes\\Azure\\Sql && tsc credentials/AzureSql.credentials.ts --outDir dist/credentials --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/AzureSql.node.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/GenericFunctions.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/interfaces.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && copy nodes\\Azure\\Sql\\AzureSql.node.json dist\\nodes\\Azure\\Sql\\ && copy nodes\\Azure\\Sql\\azuresql.svg dist\\nodes\\Azure\\Sql\\",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
@@ -34,14 +45,19 @@
     "n8nNodesApiVersion": 1,
     "credentials": [
       "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/HttpBinApi.credentials.js",
+      "dist/credentials/MicrosoftSql.credentials.js",
+      "dist/credentials/AzureSql.credentials.js"
     ],
     "nodes": [
       "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/HttpBin/HttpBin.node.js",
+      "dist/nodes/Microsoft/Sql/MicrosoftSql.node.js",
+      "dist/nodes/Azure/Sql/AzureSql.node.js"
     ]
   },
   "devDependencies": {
+    "@types/mssql": "^9.1.7",
     "@typescript-eslint/parser": "~8.32.0",
     "eslint": "^8.57.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.3",
@@ -51,5 +67,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "mssql": "^11.0.1"
   }
 }

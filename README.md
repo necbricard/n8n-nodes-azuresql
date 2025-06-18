@@ -1,12 +1,28 @@
 ![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
 
-# n8n-nodes-starter
+# n8n-nodes-azuresql
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](https://n8n.io). It includes the node linter and other dependencies.
+This package contains nodes to integrate with Azure SQL databases in [n8n](https://n8n.io).
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+## Included Nodes
 
-If you would like your node to be available on n8n cloud you can also [submit your node for verification](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/).
+### Azure SQL
+
+This node allows you to interact with Azure SQL databases. It is based on the Microsoft SQL node but adds the ability to dynamically change the database name within the node itself, allowing you to switch databases based on workflow data instead of having the database hardcoded in the credentials.
+
+#### Key Features
+
+- **Dynamic Database Selection**: Change the database within the node based on workflow data
+- **Execute SQL Queries**: Run custom SQL queries against your Azure SQL database
+- **CRUD Operations**: Insert, update, and delete data with ease
+- **Flexible Connection Options**: Configure connection settings including TLS, timeouts, and more
+
+#### Operations
+
+- **Execute Query**: Run custom SQL queries
+- **Insert**: Add new rows to a table
+- **Update**: Modify existing rows in a table
+- **Delete**: Remove rows from a table
 
 ## Prerequisites
 
@@ -18,31 +34,118 @@ You need the following installed on your development machine:
   ```
   npm install n8n -g
   ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
 
-## Using this starter
+## Installation
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+### For Production Use
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm run lint` to check for errors or `npm run lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+Follow these steps to install this node package in your n8n instance:
 
-## More information
+```
+npm install n8n-nodes-azuresql
+```
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+For more information on installing community nodes, see the [n8n documentation](https://docs.n8n.io/integrations/community-nodes/installation/).
+
+### For Development
+
+To test this node during development:
+
+#### Setup n8n Custom Directory
+
+First, make sure you have the n8n custom directory set up:
+
+**Windows:**
+```
+.\setup-n8n-custom.bat
+```
+
+**Linux/Mac:**
+```
+chmod +x setup-n8n-custom.sh
+./setup-n8n-custom.sh
+```
+
+#### Build and Link
+
+Then build and link the node:
+
+```
+npm run build
+npm link
+cd ~/.n8n/custom
+npm link n8n-nodes-azuresql
+```
+
+Start n8n:
+
+```
+n8n start
+```
+
+You should now see the Azure SQL node when you search for it in the nodes panel.
+
+## Usage
+
+1. Create an Azure SQL credential in n8n
+2. Add the Azure SQL node to your workflow
+3. Configure the node with your desired operation
+4. Optionally specify a database name to override the one in the credentials
+
+## Resources
+
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [Azure SQL Database documentation](https://docs.microsoft.com/en-us/azure/azure-sql/database/)
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
+
+## Publishing to npm
+
+This package is ready to be published to the npm registry. Follow these steps to publish:
+
+### Prerequisites
+
+1. Create an npm account if you don't have one: [npm signup](https://www.npmjs.com/signup)
+2. Login to npm from your terminal: `npm login`
+
+### Publishing
+
+#### Using the provided scripts (recommended)
+
+These scripts will build the package, publish it, and add appropriate dist-tags:
+
+**Windows:**
+```
+.\publish-with-tags.bat
+```
+
+**Linux/Mac:**
+```
+chmod +x publish-with-tags.sh
+./publish-with-tags.sh
+```
+
+#### Manual publishing
+
+1. Build the package: `npm run build`
+2. Publish the package: `npm publish`
+3. Add dist-tags (optional):
+   ```
+   npm dist-tag add n8n-nodes-azuresql@0.1.0 latest
+   npm dist-tag add n8n-nodes-azuresql@0.1.0 v0
+   npm dist-tag add n8n-nodes-azuresql@0.1.0 v0.1
+   ```
+
+### Versioning
+
+This package follows [Semantic Versioning](https://semver.org/):
+
+- **Major version (x.0.0)**: Incompatible API changes
+- **Minor version (0.x.0)**: Add functionality in a backward-compatible manner
+- **Patch version (0.0.x)**: Backward-compatible bug fixes
+
+To update the version before publishing:
+1. Edit the version in package.json
+2. Run `npm version [major|minor|patch]` to update the version
