@@ -44,15 +44,9 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js",
-      "dist/credentials/MicrosoftSql.credentials.js",
       "dist/credentials/AzureSql.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js",
-      "dist/nodes/Microsoft/Sql/MicrosoftSql.node.js",
       "dist/nodes/Azure/Sql/AzureSql.node.js"
     ]
   },
