@@ -1,11 +1,11 @@
 import type { ICredentialType, INodeProperties } from 'n8n-workflow';
 
-export class AzureSql implements ICredentialType {
-	name = 'azureSql';
+export class AzureSqlApi implements ICredentialType {
+	name = 'azureSqlApi';
 
-	displayName = 'Azure SQL';
+	displayName = 'Azure SQL API';
 
-	documentationUrl = 'azureSql';
+	documentationUrl = 'https://github.com/necbricard/n8n-nodes-azuresql/blob/master/README.md';
 
 	properties: INodeProperties[] = [
 		{

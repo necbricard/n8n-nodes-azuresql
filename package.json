@@ -11,17 +11,17 @@
     "mssql"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/yourusername/n8n-nodes-azuresql#readme",
+  "homepage": "https://github.com/necbricard/n8n-nodes-azuresql#readme",
   "author": {
-    "name": "Your Name",
+    "name": "Brian R",
     "email": "your.email@example.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/n8n-nodes-azuresql.git"
+    "url": "git+https://github.com/necbricard/n8n-nodes-azuresql.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/n8n-nodes-azuresql/issues"
+    "url": "https://github.com/necbricard/n8n-nodes-azuresql/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -31,7 +31,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "npx rimraf dist && mkdir dist && mkdir dist\\credentials && mkdir dist\\nodes && mkdir dist\\nodes\\Azure && mkdir dist\\nodes\\Azure\\Sql && tsc credentials/AzureSql.credentials.ts --outDir dist/credentials --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/AzureSql.node.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/GenericFunctions.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/interfaces.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && copy nodes\\Azure\\Sql\\AzureSql.node.json dist\\nodes\\Azure\\Sql\\ && copy nodes\\Azure\\Sql\\azuresql.svg dist\\nodes\\Azure\\Sql\\",
+    "build": "npx rimraf dist && mkdir dist && mkdir dist\\credentials && mkdir dist\\nodes && mkdir dist\\nodes\\Azure && mkdir dist\\nodes\\Azure\\Sql && tsc credentials/AzureSqlApi.credentials.ts --outDir dist/credentials --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/AzureSql.node.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/GenericFunctions.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && tsc nodes/Azure/Sql/interfaces.ts --outDir dist/nodes/Azure/Sql --esModuleInterop --skipLibCheck --target es2019 --module commonjs && copy nodes\\Azure\\Sql\\AzureSql.node.json dist\\nodes\\Azure\\Sql\\ && copy nodes\\Azure\\Sql\\azuresql.svg dist\\nodes\\Azure\\Sql\\",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",

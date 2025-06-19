@@ -18,7 +18,7 @@ export class AzureSql implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'azureSql',
+				name: 'azureSqlApi',
 				required: true,
 			},
 		],
